@@ -1,6 +1,12 @@
-.color-selected{
+.color-selected {
   height: 15px;
   width: 90%;
+}
+
+::ng-deep mat-form-field.panel-open {
+  .mat-mdc-select-arrow{
+    transform: rotate(-180deg);
+  }
 }
 
 ::ng-deep.picker-panel {
