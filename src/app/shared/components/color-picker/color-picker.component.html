@@ -1,17 +1,13 @@
-<mat-form-field appearance="fill">
-  <mat-label>Input</mat-label>
-  <input matInput>
-  <mat-icon class="pointer" matSuffix (click)="isOpen = !isOpen" cdkOverlayOrigin #trigger="cdkOverlayOrigin">arrow_drop_down</mat-icon>
+<mat-form-field class="color-picker" appearance="fill">
+  <mat-select [formControl]="colorSelect" panelClass="picker-panel">
+    <mat-select-trigger>
+      <div class="color-selected" [style.background-color]="colorSelect.value"></div>
+    </mat-select-trigger>
+    <mat-option
+      *ngFor="let color of basicColors"
+      [value]="color"
+      [ngClass]="{'black': color === '#000' || color === 'black'}"
+      [style.background-color]="color">
+    </mat-option>
+  </mat-select>
 </mat-form-field>
-
-<ng-template
-  cdkConnectedOverlay
-  [cdkConnectedOverlayOrigin]="trigger"
-  [cdkConnectedOverlayOpen]="isOpen"
->
-  <ul class="example-list">
-    <li>Item 1</li>
-    <li>Item 2</li>
-    <li>Item 3</li>
-  </ul>
-</ng-template>
