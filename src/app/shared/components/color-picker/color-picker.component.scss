@@ -1,0 +1,17 @@
+.color-selected{
+  height: 15px;
+  width: 90%;
+}
+
+::ng-deep.picker-panel {
+  mat-option{
+    &[aria-selected=true] {
+      border: 2px dotted black;
+
+      &.black{
+        border: 2px dotted white;
+      }
+    }
+  }
+
+}
