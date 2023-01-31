@@ -1,4 +1,17 @@
 <mat-form-field appearance="fill">
   <mat-label>Input</mat-label>
   <input matInput>
+  <mat-icon class="pointer" matSuffix (click)="isOpen = !isOpen" cdkOverlayOrigin #trigger="cdkOverlayOrigin">arrow_drop_down</mat-icon>
 </mat-form-field>
+
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayOpen]="isOpen"
+>
+  <ul class="example-list">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul>
+</ng-template>
