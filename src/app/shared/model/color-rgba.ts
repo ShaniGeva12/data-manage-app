@@ -23,4 +23,8 @@ export class ColorRgba  {
   getColorString() : string {
     return `rgba(${this.r}, ${this.g}, ${this.b}, ${this.a})`;
   }
+
+  compare(color: ColorRgba) : boolean {
+    return (this.r === color.r && this.g === color.g && this.b === color.b && this.a === color.a)? true : false;
+  }
 }

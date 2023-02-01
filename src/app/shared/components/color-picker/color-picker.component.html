@@ -4,7 +4,7 @@
       <div class="color-selected" [style.background-color]="colorSelect.value"></div>
     </mat-select-trigger>
 
-    <mat-grid-list cols="{{ basicColors.length }}" rowHeight="1:1" gutterSize="2">
+    <mat-grid-list cols="{{ basicRGBA.length }}" rowHeight="1:1" gutterSize="2">
       <ng-container *ngFor="let colors of colorsPaletteString">
         <mat-grid-tile *ngFor="let color of colors">
           <mat-option
@@ -14,8 +14,6 @@
           </mat-option>
         </mat-grid-tile>
       </ng-container>
-    </mat-grid-list>
-    <mat-grid-list cols="{{ basicColors.length }}" rowHeight="1:1" gutterSize="2">
     </mat-grid-list>
   </mat-select>
 </mat-form-field>

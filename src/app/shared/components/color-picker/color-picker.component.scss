@@ -1,5 +1,5 @@
 .color-selected {
-  height: 15px;
+  min-height: 15px;
   width: 90%;
 }
 
@@ -12,7 +12,6 @@
 ::ng-deep.picker-panel {
   &.mdc-menu-surface.mat-mdc-select-panel{
     padding-inline: 5px;
-    // padding-bottom: 15px;
   }
 
   mat-option{
