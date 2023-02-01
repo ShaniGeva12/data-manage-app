@@ -42,6 +42,10 @@ export class ColorPickerComponent implements OnInit, ControlValueAccessor {
   //   'rgba(244, 67, 54, 1)',
   //   'rgba(0, 0, 0, 1)',
   // ];
+
+  colorsPaletteRgba: ColorRgba[][] = [];
+  colorsPaletteString: string[][] = this.colorsPaletteRgba.map(item=> item.map(item=> item.getColorString() || ''));
+
   colorSelect = new FormControl();
 
   isOpen = false;
@@ -54,6 +58,19 @@ export class ColorPickerComponent implements OnInit, ControlValueAccessor {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     console.log(this.basicColors);
+    this.colorsPaletteRgba = this.createColorsPalette(this.basicRGBA);
+    console.log(this.colorsPaletteRgba);
+  }
+
+  createColorsPalette(basicRgbaColors: ColorRgba[]) : ColorRgba[][] {
+    let colorsPalette: ColorRgba[][] = [];
+    for(let i = 0; i < basicRgbaColors.length; i++) {
+      colorsPalette[i] = [];
+      for(let j = 1; j< 10; j++) {
+        colorsPalette[i][j] = ColorRgba.createFromColor(basicRgbaColors[i], j*0.1);
+      }
+    }
+    return colorsPalette;
   }
 
   writeValue(obj: any): void {
