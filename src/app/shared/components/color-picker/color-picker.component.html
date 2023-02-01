@@ -6,7 +6,7 @@
     <mat-option
       *ngFor="let color of basicColors"
       [value]="color"
-      [ngClass]="{'black': color === '#000' || color === 'black'}"
+      [ngClass]="{'black': color === 'rgba(0, 0, 0, 1)' || color === 'black'}"
       [style.background-color]="color">
     </mat-option>
   </mat-select>
