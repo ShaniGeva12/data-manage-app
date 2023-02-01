@@ -12,7 +12,13 @@ export class ColorRgba  {
       this.g = g;
       this.b = b;
       this.a = a || 1;
-    }
+  }
+
+  static createFromColor(rgbColor: ColorRgba, a?: number,) {
+    const newColor = new ColorRgba(rgbColor.r, rgbColor.g, rgbColor.b, rgbColor.a);
+    newColor.a = a || newColor.a;
+    return newColor;
+  }
 
   getColorString() : string {
     return `rgba(${this.r}, ${this.g}, ${this.b}, ${this.a})`;
