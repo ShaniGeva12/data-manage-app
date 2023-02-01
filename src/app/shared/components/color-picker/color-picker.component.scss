@@ -10,6 +10,10 @@
 }
 
 ::ng-deep.picker-panel {
+  &.mdc-menu-surface.mat-mdc-select-panel{
+    // display: grid;
+  }
+
   mat-option{
     &[aria-selected=true] {
       border: 2px dotted black;
