@@ -1,3 +1,41 @@
-.app{
+@import "src/assets/style/_bits.scss";
+
+.app {
   padding: 50px;
+
+  mat-drawer-container {
+    background: #FFFF;
+    // display: contents;
+
+    mat-drawer-content {
+      // display: contents;
+      padding: 20px;
+    }
+  }
+
+  .action-btn {
+    &-fab {
+      background: $action-btns;
+      color: white;
+
+      &:hover {
+        background: $action-btns-hover;
+      }
+    }
+
+    &-icon {
+      color: $action-btns;
+
+      &:hover {
+        color: $action-btns-hover;
+      }
+    }
+
+  }
+}
+
+.buttons {
+  padding: 10px 5px;
+  display: flex;
+  justify-content: flex-end;
 }

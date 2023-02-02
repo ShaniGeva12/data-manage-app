@@ -1,4 +1,23 @@
 <div class="app">
   <!-- <app-color-picker [formControl]="color"></app-color-picker> -->
-  <app-tags></app-tags>
+
+  <mat-drawer-container class="" [hasBackdrop]="true">
+    <mat-drawer-content>
+      <div class="buttons">
+        <button class="action-btn-icon" mat-icon-button aria-label="Add Tag" >
+          <mat-icon>grid_view</mat-icon>
+        </button>
+        <button class="action-btn-icon" mat-icon-button aria-label="Add Tag" >
+          <mat-icon>menu</mat-icon>
+        </button>
+        <button class="action-btn-icon" mat-icon-button aria-label="Add Tag" (click)="drawer.toggle()" >
+          <mat-icon>add_circle</mat-icon>
+        </button>
+      </div>
+      <app-tags></app-tags>
+    </mat-drawer-content>
+    <mat-drawer #drawer mode="over" position="end">
+      <app-add-tag></app-add-tag>
+    </mat-drawer>
+  </mat-drawer-container>
 </div>
