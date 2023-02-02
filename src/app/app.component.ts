@@ -11,17 +11,17 @@ import { ColorRgba } from './shared/model/color-rgba';
 export class AppComponent {
   title = 'data-manage-app';
   subs = new SubSink();
-  color = new FormControl();
-  myColor = new ColorRgba(103, 58, 183, 1);
-  myStringColor = 'rgba(244, 67, 54, 1)';
+  // color = new FormControl();
+  // myColor = new ColorRgba(103, 58, 183, 1);
+  // myStringColor = 'rgba(244, 67, 54, 1)';
 
   ngOnInit(): void {
 
-    this.subs.sink = this.color.valueChanges.subscribe(value => {
-      console.log(value);
-    });
+    // this.subs.sink = this.color.valueChanges.subscribe(value => {
+    //   console.log(value);
+    // });
 
-    this.color.setValue(this.myStringColor);
+    // this.color.setValue(this.myStringColor);
   }
 
   ngOnDestroy() {
