@@ -3,17 +3,29 @@
 
   <mat-drawer-container class="" [hasBackdrop]="true">
     <mat-drawer-content>
-      <div class="buttons">
-        <button class="action-btn-icon" mat-icon-button aria-label="Add Tag" >
-          <mat-icon>grid_view</mat-icon>
-        </button>
-        <button class="action-btn-icon" mat-icon-button aria-label="Add Tag" >
-          <mat-icon>menu</mat-icon>
-        </button>
-        <button class="action-btn-icon" mat-icon-button aria-label="Add Tag" (click)="drawer.toggle()" >
-          <mat-icon>add_circle</mat-icon>
-        </button>
+      <div class="title">
+        <div class="text"> Management Tool </div>
+        <div class="buttons">
+          <button class="action-btn-icon" mat-icon-button aria-label="Add Tag" >
+            <mat-icon>grid_view</mat-icon>
+          </button>
+          <button class="action-btn-icon" mat-icon-button aria-label="Add Tag" >
+            <mat-icon>menu</mat-icon>
+          </button>
+          <button class="action-btn-icon" mat-icon-button aria-label="Add Tag" (click)="drawer.toggle()" >
+            <mat-icon>add_circle</mat-icon>
+          </button>
+        </div>
       </div>
+
+      <div class="filter-container">
+        <mat-form-field appearance="outline">
+          <!-- <mat-label>Find by name...</mat-label> -->
+          <input matInput placeholder="Find by name...">
+          <mat-icon matPrefix>search</mat-icon>
+        </mat-form-field>
+      </div>
+
       <app-tags></app-tags>
     </mat-drawer-content>
     <mat-drawer #drawer mode="over" position="end">

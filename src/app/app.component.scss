@@ -32,10 +32,31 @@
     }
 
   }
-}
 
-.buttons {
-  padding: 10px 5px;
-  display: flex;
-  justify-content: flex-end;
+  .title{
+    color: $title;
+    display: flex;
+    justify-content: space-between;
+
+    .text {
+      font-size: 16px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .filter-container {
+    display: flex;
+
+    mat-form-field {
+      width: 100%;
+    }
+  }
+
+  .buttons {
+    padding: 10px 5px;
+    display: flex;
+    justify-content: flex-end;
+  }
 }
