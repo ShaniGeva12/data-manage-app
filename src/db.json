@@ -1,12 +1,31 @@
 {
-  "bands": [
+  "tags": [
     {
       "id": 0,
       "color": 0,
-      "name": "",
+      "name": "Car accident",
+      "description": "two cars crashed at 2nd street",
       "createDate": "",
       "LastUpdate": "",
-      "createdBy": ""
+      "createdBy": "Roni Blondi"
+    },
+    {
+      "id": 1,
+      "color": 0,
+      "name": "Murder",
+      "description": "someone got killed",
+      "createDate": "",
+      "LastUpdate": "",
+      "createdBy": "Avi Navi"
+    },
+    {
+      "id": 2,
+      "color": 0,
+      "name": "Suspect",
+      "description": "very suspicious",
+      "createDate": "",
+      "LastUpdate": "",
+      "createdBy": "Shani Geva"
     }
   ]
 }
