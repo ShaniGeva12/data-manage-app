@@ -13,7 +13,7 @@ Run `json-server --watch db.json --port 3002` to activate local db.
 Run `ng serve --port 5001` for a dev server. Navigate to `http://localhost:5002/`. 
 The application will automatically reload if you change any of the source files.
 
-## -----------------------------------------------
+## ------------------------------------------------------------------------------------------
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
