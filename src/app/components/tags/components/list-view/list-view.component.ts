@@ -39,9 +39,7 @@ export class ListViewComponent {
   }
 
   ngOnInit(): void {
-    // this.subs.sink = this.tagsService.tags$.subscribe((tags : Tag[])=>{
-    //   this.dataSource.data = tags;
-    // });
+    this.dataSource.sortingDataAccessor = (data, sortHeaderId) => data[sortHeaderId].toLocaleLowerCase();
   }
 
   ngAfterViewInit(): void {
