@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SubSink } from 'subsink';
 import { TagsService } from '../../services/tags.service';
@@ -7,7 +7,8 @@ import { AddTagRequest, Tag } from '../../model/tag.model';
 @Component({
   selector: 'app-add-tag',
   templateUrl: './add-tag.component.html',
-  styleUrls: ['./add-tag.component.scss']
+  styleUrls: ['./add-tag.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddTagComponent {
   @Input() tag: Tag | undefined;

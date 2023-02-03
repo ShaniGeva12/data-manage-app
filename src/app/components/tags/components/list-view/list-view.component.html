@@ -32,11 +32,5 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr class="mat-elevation-z8" mat-row *matRowDef="let row; columns: displayedColumns;" (click)="rowClicked(row)"></tr>
   </table>
-  <mat-paginator
-    [pageSize]="10"
-    [pageSizeOptions]="[5, 10, 20]"
-    showFirstLastButtons
-    aria-label="Select page">
-  </mat-paginator>
 
 </div>

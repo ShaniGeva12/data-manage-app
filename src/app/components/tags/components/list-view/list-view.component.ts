@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
@@ -9,16 +9,17 @@ import { TagsService } from '../../services/tags.service';
 @Component({
   selector: 'app-list-view',
   templateUrl: './list-view.component.html',
-  styleUrls: ['./list-view.component.scss']
+  styleUrls: ['./list-view.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListViewComponent {
   @ViewChild(MatTable, { static: true })
   table!: MatTable<any>;
   @ViewChild(MatSort, { static: true })
   sort!: MatSort;
-  @ViewChild(MatPaginator)
-  paginator!: MatPaginator;
+  @Input() paginator!: MatPaginator;
 
+  @Input() tagsData : any;
   @Output() tagRowClicked = new EventEmitter<Tag>();
 
   dataSource = new MatTableDataSource<any>();
@@ -28,10 +29,19 @@ export class ListViewComponent {
 
   constructor(private tagsService: TagsService){}
 
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes['tagsData'] ){
+      this.dataSource.data = changes['tagsData'].currentValue;
+    }
+    if(changes['paginator'] ){
+      this.dataSource.paginator = this.paginator;
+    }
+  }
+
   ngOnInit(): void {
-    this.subs.sink = this.tagsService.tags$.subscribe((tags : Tag[])=>{
-      this.dataSource.data = tags;
-    });
+    // this.subs.sink = this.tagsService.tags$.subscribe((tags : Tag[])=>{
+    //   this.dataSource.data = tags;
+    // });
   }
 
   ngAfterViewInit(): void {

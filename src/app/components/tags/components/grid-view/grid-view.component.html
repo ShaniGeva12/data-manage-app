@@ -1,5 +1,5 @@
 <div class="grid-container">
-  <div class="card-container" *ngFor="let tag of dataSource$ | async; index as i">
+  <div class="card-container" *ngFor="let tag of activePageDataChunk">
     <mat-card class="tag-card pointer" (click)="tagItemClicked(tag)">
       <mat-card-content>
         <div class="tag-color" [style.background-color]="tag.color || 'white' "></div>

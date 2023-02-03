@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SubSink } from 'subsink';
 import { ColorRgba } from './shared/model/color-rgba';
@@ -9,7 +9,8 @@ import { ItemsView } from './components/tags/model/items-view';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   @ViewChild( MatDrawer)
@@ -21,8 +22,8 @@ export class AppComponent {
   tagToEdit: Tag | undefined;
 
   viewOptions = ItemsView;
-  // view = ItemsView.List;
-  view = ItemsView.Grid;
+  view = ItemsView.List;
+  // view = ItemsView.Grid;
 
   ngOnInit(): void {
   }

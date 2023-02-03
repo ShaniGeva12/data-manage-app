@@ -1,5 +1,30 @@
-<app-list-view *ngIf="view === viewOptions.List; else gridView" (tagRowClicked)="tagClicked($event)"></app-list-view>
+<div *ngIf="(dataSource$ | async) as dataSource; else loading">
+  <app-list-view
+    *ngIf="view === viewOptions.List; else gridView"
+    [tagsData]="dataSource"
+    [paginator]="paginator"
+    (tagRowClicked)="tagClicked($event)">
+  </app-list-view>
 
-<ng-template #gridView>
-  <app-grid-view (tagClicked)="tagClicked($event)"></app-grid-view>
+  <ng-template #gridView>
+    <app-grid-view
+      [tagsData]="dataSource"
+      [paginator]="paginator"
+      [pageEvent]="pageEvent"
+      (tagClicked)="tagClicked($event)">
+    </app-grid-view>
+  </ng-template>
+
+  <mat-paginator
+    [pageSize]="10"
+    [length]="dataSource.length"
+    [pageSizeOptions]="[5, 10, 20]"
+    (page)="onPageChanged($event)"
+    showFirstLastButtons
+    aria-label="Select page">
+  </mat-paginator>
+</div>
+
+<ng-template #loading>
+  <app-loading></app-loading>
 </ng-template>
