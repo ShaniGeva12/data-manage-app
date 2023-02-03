@@ -1,0 +1,26 @@
+@import "src/assets/style/_bits.scss";
+
+.tags-table {
+  border-spacing: 0 15px;
+
+  .mat-mdc-header-cell {
+    border-bottom: 0px;
+  }
+
+  .mat-mdc-row {
+    border-radius: 5px;
+
+    .mat-mdc-cell {
+      cursor: pointer;
+    }
+
+    &:hover {
+      outline: 2px solid $hovering;
+
+      .mat-mdc-cell {
+        font-weight: bold;
+        color: $hovering;
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SubSink } from 'subsink';
 import { TagsService } from '../../services/tags.service';
@@ -16,10 +16,6 @@ export class AddTagComponent {
 
   subs: SubSink = new SubSink();
 
-  ngOnDestroy(): void {
-      this.subs.unsubscribe();
-  }
-
   constructor(
     private tagsService: TagsService,
     private fb: FormBuilder
@@ -27,6 +23,16 @@ export class AddTagComponent {
 
   ngOnInit(): void {
     this.setForm();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes['tag'] && this.tagForm){
+      this.checkTagToEdit();
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
 
   setForm(){
@@ -46,16 +52,34 @@ export class AddTagComponent {
       createDate:  [ null ],
       lastUpdate:  [ null ]
     });
+
+    this.checkTagToEdit();
+  }
+
+  checkTagToEdit() : void {
+    if(this.tag) {
+      this.tagForm.controls['name'].setValue(this.tag.name);
+      this.tagForm.controls['color'].setValue(this.tag.color);
+      this.tagForm.controls['description'].setValue(this.tag.description);
+      this.tagForm.controls['createdBy'].setValue(this.tag.createdBy);
+      this.tagForm.controls['createdBy'].disable();
+      this.tagForm.controls['createDate'].setValue(this.tag.createDate);
+      this.tagForm.controls['lastUpdate'].setValue(this.tag.lastUpdate);
+    } else {
+      this.tagForm.controls['color'].setValue('');
+      this.tagForm.reset();
+    }
   }
 
   onSubmit() {
     this.tagForm.controls['lastUpdate'].setValue(new Date());
     if(!this.tag) {
       this.tagForm.controls['createDate'].setValue(new Date());
+      this.tagsService.addTag(<AddTagRequest>this.tagForm.value);
+    } else {
+      let newTag : Tag = {...this.tag, ...this.tagForm.value}
+      this.tagsService.updateTag(newTag);
     }
-    //console.log(this.tagForm.value);
-    this.tagsService.addTag(<AddTagRequest>this.tagForm.value);
-
     //TODO: loading and then closing the drawer if success, else show error msg
   }
 }

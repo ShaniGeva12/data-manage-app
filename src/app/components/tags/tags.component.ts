@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { TagsService } from './services/tags.service';
 import { SubSink } from 'subsink';
@@ -19,6 +19,8 @@ export class TagsComponent {
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
+  @Output() tagRowClicked = new EventEmitter<Tag>();
+
   dataSource = new MatTableDataSource<any>();
   displayedColumns: string[] = ['color', 'name', 'createDate', 'lastUpdate', 'createdBy'];
 
@@ -32,12 +34,16 @@ export class TagsComponent {
     });
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
 
   ngOnDestroy(): void {
     this.subs.unsubscribe();
+  }
+
+  rowClicked(row: Tag): void{
+    this.tagRowClicked.emit(row);
   }
 }
