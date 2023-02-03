@@ -29,11 +29,18 @@ export class TagsService {
     );
   }
 
-  private postTag(tag :AddTagRequest){
+  private postTag(tag: AddTagRequest){
     return this.http.post<Tag>(this.TagsServiceUrl, tag)
     .pipe(
       catchError(err => this.handleError(err, 'postTag', tag))
     );
+  }
+
+  private putTag(tag: Tag): Observable<Tag> {
+    return this.http.put<Tag>( `${this.TagsServiceUrl}/${tag.id}` , <AddTagRequest>tag)
+      .pipe(
+        catchError(err => this.handleError(err, 'putTag', tag))
+      );
   }
 
   private deleteTag(id: number): Observable<unknown> {
@@ -46,16 +53,13 @@ export class TagsService {
 
   private handleError(error: HttpErrorResponse, methodName? : string, obj? : any) {
     if (error.status === 0) {
-      // A client-side or network error occurred. Handle it accordingly.
+      // A client-side or network error occurred
       console.error('An error occurred:', error.error);
     } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong.
       console.error(
         `Backend returned code ${error.status}, body was: `, error.error);
     }
-    // Return an observable with a user-facing error message.
-    return throwError('Something went wrong, please try again later.' + methodName + ' ' + obj);
+    return throwError(() => error);
   }
 
   addTag(tag: AddTagRequest) {
@@ -64,6 +68,16 @@ export class TagsService {
         tap(() => this.refreshTagsList()),
         catchError(err =>
         this.handleError(err, 'addTag', 'AddTagRequest: ' + tag)
+      ))
+    .subscribe();
+  }
+
+  updateTag(tag: Tag) {
+    this.putTag(tag)
+      .pipe(
+        tap(() => this.refreshTagsList()),
+        catchError(err =>
+        this.handleError(err, 'updateTag', 'Tag: ' + tag)
       ))
     .subscribe();
   }
