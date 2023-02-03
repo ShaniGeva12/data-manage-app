@@ -21,7 +21,8 @@ export class AppComponent {
   tagToEdit: Tag | undefined;
 
   viewOptions = ItemsView;
-  view = ItemsView.List;
+  // view = ItemsView.List;
+  view = ItemsView.Grid;
 
   ngOnInit(): void {
   }

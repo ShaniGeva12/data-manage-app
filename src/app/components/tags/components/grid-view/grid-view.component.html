@@ -1,1 +1,14 @@
-<p>grid-view works!</p>
+<div class="grid-container">
+  <div class="card-container" *ngFor="let tag of dataSource$ | async; index as i">
+    <mat-card class="tag-card pointer" (click)="tagItemClicked(tag)">
+      <mat-card-content>
+        <div class="tag-color" [style.background-color]="tag.color || 'white' "></div>
+      </mat-card-content>
+      <mat-card-footer>
+        {{ tag.name }}
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</div>
+
+

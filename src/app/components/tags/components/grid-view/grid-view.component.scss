@@ -1,0 +1,46 @@
+@import "src/assets/style/_bits.scss";
+
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+
+  .card-container {
+    padding: 10px;
+  }
+
+  .tag {
+
+    &-color {
+      height: 95px;
+      width: 95px;
+    }
+
+    &-card {
+      border-radius: 5px;
+
+      mat-card-footer {
+        background: $grey-bg;
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+        margin-top: 10px;
+      }
+
+      &:hover {
+        outline: 2px solid $hovering;
+
+        .tag-color {
+          height: 100px;
+          width: 100px;
+        }
+
+        mat-card-footer {
+          font-weight: bold;
+          color: $hovering;
+        }
+      }
+    }
+  }
+
+
+}

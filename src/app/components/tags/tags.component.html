@@ -1,5 +1,5 @@
-<app-list-view *ngIf="view === viewOptions.List; else gridView" (tagRowClicked)="rowClicked($event)"></app-list-view>
+<app-list-view *ngIf="view === viewOptions.List; else gridView" (tagRowClicked)="tagClicked($event)"></app-list-view>
 
 <ng-template #gridView>
-  <app-grid-view></app-grid-view>
+  <app-grid-view (tagClicked)="tagClicked($event)"></app-grid-view>
 </ng-template>

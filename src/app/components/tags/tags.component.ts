@@ -19,7 +19,7 @@ export class TagsComponent {
 
   }
 
-  rowClicked(tag: Tag): void{
+  tagClicked(tag: Tag): void{
     this.tagRowClicked.emit(tag);
   }
 
