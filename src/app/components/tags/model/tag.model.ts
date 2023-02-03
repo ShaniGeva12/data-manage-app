@@ -4,7 +4,7 @@ export interface Tag {
   name: string,
   description: string,
   createDate: Date,
-  lastUpdate: Date,
+  lastUpdate?: Date,
   createdBy: string
 }
 
@@ -13,6 +13,6 @@ export interface AddTagRequest {
   name: string,
   description: string,
   createDate: Date,
-  lastUpdate: Date,
+  lastUpdate?: Date,
   createdBy: string
 }
