@@ -6,10 +6,10 @@
       <div class="title">
         <div class="text"> Management Tool </div>
         <div class="buttons">
-          <button class="action-btn-icon" mat-icon-button aria-label="Add Tag" >
+          <button class="action-btn-icon" mat-icon-button aria-label="Grid View" >
             <mat-icon>grid_view</mat-icon>
           </button>
-          <button class="action-btn-icon" mat-icon-button aria-label="Add Tag" >
+          <button class="action-btn-icon" mat-icon-button aria-label="List View" >
             <mat-icon>menu</mat-icon>
           </button>
           <button class="action-btn-icon" mat-icon-button aria-label="Add Tag" (click)="drawer.toggle()" >
@@ -28,8 +28,15 @@
 
       <app-tags></app-tags>
     </mat-drawer-content>
-    <mat-drawer #drawer mode="over" position="end">
-      <app-add-tag></app-add-tag>
+    <mat-drawer class="mat-elevation-z8" #drawer mode="over" position="end">
+
+      <div class="drawer-inner-container ">
+        <app-add-tag></app-add-tag>
+
+        <button class="action-btn-icon" mat-icon-button aria-label="Grid View" (click)="drawer.toggle()"  >
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
     </mat-drawer>
   </mat-drawer-container>
 </div>

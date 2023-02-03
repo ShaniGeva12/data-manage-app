@@ -5,6 +5,7 @@
 
   mat-drawer-container {
     background: #FFFF;
+    min-height: 75vh;
     // display: contents;
 
     mat-drawer-content {
@@ -33,19 +34,6 @@
 
   }
 
-  .title{
-    color: $title;
-    display: flex;
-    justify-content: space-between;
-
-    .text {
-      font-size: 16px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-    }
-  }
-
   .filter-container {
     display: flex;
 
@@ -58,5 +46,15 @@
     padding: 10px 5px;
     display: flex;
     justify-content: flex-end;
+  }
+
+  mat-drawer {
+    min-width: 35%;
+    background: $light-bg;
+
+    .drawer-inner-container {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 }
