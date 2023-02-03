@@ -29,11 +29,11 @@
     },
     {
       "name": "new tag",
-      "color": "rgba(103, 58, 183, 1)",
+      "color": "rgba(0, 0, 0, 1)",
       "description": "blah blah blah 01",
       "createdBy": "Shani",
       "createDate": "2023-02-03T11:12:59.251Z",
-      "lastUpdate": "2023-02-03T16:16:44.036Z",
+      "lastUpdate": "2023-02-03T21:46:36.467Z",
       "id": 3
     },
     {
