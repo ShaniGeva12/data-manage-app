@@ -26,6 +26,15 @@
       "createDate": "",
       "lastUpdate": "",
       "createdBy": "Shani Geva"
+    },
+    {
+      "name": "new tag",
+      "color": "rgba(103, 58, 183, 1)",
+      "description": "blah blah blah",
+      "createdBy": "Shani",
+      "createDate": "2023-02-03T11:12:59.251Z",
+      "lastUpdate": "2023-02-03T11:12:59.251Z",
+      "id": 3
     }
   ]
 }
