@@ -12,6 +12,7 @@ import { AddTagRequest, Tag } from '../../model/tag.model';
 })
 export class AddTagComponent {
   @Input() tag: Tag | undefined;
+  @Input() isShown: boolean = false;
   @Output() submitSuccess = new EventEmitter<boolean>();
 
   tagForm!: FormGroup;
@@ -28,7 +29,7 @@ export class AddTagComponent {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if(changes['tag'] && this.tagForm){
+    if((changes['isShown'] || changes['tag']) && this.tagForm){
       this.checkTagToEdit();
     }
   }

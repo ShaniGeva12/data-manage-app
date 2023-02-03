@@ -6,19 +6,21 @@
     </span>
   </div>
 
-  <div class="section">
-      <div class="label">Name: </div>
-      <mat-form-field class="val" appearance="outline">
-          <input matInput data-test="tag-name" placeholder="Type tag name..." formControlName="name" >
-          <mat-error *ngIf="tagForm.controls['name'].errors">
-              Required Field
-          </mat-error>
-      </mat-form-field>
-  </div>
+  <div class="row">
+    <div class="section-lg">
+        <div class="label">Name: </div>
+        <mat-form-field class="val" appearance="outline">
+            <input matInput data-test="tag-name" placeholder="Type tag name..." formControlName="name" >
+            <mat-error *ngIf="tagForm.controls['name'].errors">
+                Required Field
+            </mat-error>
+        </mat-form-field>
+    </div>
 
-  <div class="section">
-      <div class="label">Color: </div>
-      <app-color-picker data-test="tag-color" formControlName="color"></app-color-picker>
+    <div class="section-sm">
+        <div class="label">Color: </div>
+        <app-color-picker data-test="tag-color" formControlName="color"></app-color-picker>
+    </div>
   </div>
 
   <div class="section">

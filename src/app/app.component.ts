@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SubSink } from 'subsink';
 import { ColorRgba } from './shared/model/color-rgba';
@@ -24,6 +24,10 @@ export class AppComponent {
   viewOptions = ItemsView;
   view = ItemsView.List;
   // view = ItemsView.Grid;
+
+  constructor(
+    private cd: ChangeDetectorRef,
+    ) { }
 
   ngOnInit(): void {
   }

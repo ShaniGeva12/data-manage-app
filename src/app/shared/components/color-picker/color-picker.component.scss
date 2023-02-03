@@ -12,6 +12,10 @@
 ::ng-deep.picker-panel {
   &.mdc-menu-surface.mat-mdc-select-panel{
     padding-inline: 5px;
+    min-width: 210px;
+
+    position: absolute;
+    right: 1px;
   }
 
   mat-option{
