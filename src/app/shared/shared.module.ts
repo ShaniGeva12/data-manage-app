@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { ColorPickerComponent } from './components/color-picker/color-picker.component';
 import { MaterialModule } from './material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoadingComponent } from './components/loading/loading.component';
 
 
 
 @NgModule({
   declarations: [
-    ColorPickerComponent
+    ColorPickerComponent,
+    LoadingComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
   ],
   exports: [
-    ColorPickerComponent
+    ColorPickerComponent,
+    LoadingComponent
   ]
 })
 export class SharedModule { }
