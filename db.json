@@ -2,11 +2,11 @@
   "tags": [
     {
       "id": 0,
-      "color": "rgba(250, 235, 59, 1)",
+      "color": "rgba(250, 235, 59, 0.5)",
       "name": "Car accident",
       "description": "two cars crashed at 2nd street",
       "createDate": "2023-02-01T15:46:46.654Z",
-      "lastUpdate": "2023-02-03T15:47:00.131Z",
+      "lastUpdate": "2023-02-03T18:26:32.219Z",
       "createdBy": "Roni Blondi"
     },
     {
@@ -53,6 +53,60 @@
       "createDate": "2023-02-03T16:42:24.879Z",
       "lastUpdate": "2023-02-03T16:42:24.879Z",
       "id": 5
+    },
+    {
+      "name": "xzlm",
+      "color": "rgba(0, 0, 0, 0.30000000000000004)",
+      "description": "132465",
+      "createdBy": "Dana Din",
+      "createDate": "2023-02-03T17:57:38.963Z",
+      "lastUpdate": "2023-02-03T17:57:38.963Z",
+      "id": 6
+    },
+    {
+      "name": "my day",
+      "color": "rgba(233, 30, 98, 0.7000000000000001)",
+      "description": "what a yay day",
+      "createdBy": "Bloom",
+      "createDate": "2023-02-03T19:45:20.747Z",
+      "lastUpdate": "2023-02-03T19:45:20.747Z",
+      "id": 7
+    },
+    {
+      "name": "ABC!",
+      "color": "rgba(0, 0, 0, 0.6000000000000001)",
+      "description": "123",
+      "createdBy": "Dana Din",
+      "createDate": "2023-02-03T19:45:51.657Z",
+      "lastUpdate": "2023-02-03T19:45:51.657Z",
+      "id": 8
+    },
+    {
+      "name": "cats",
+      "color": "rgba(38, 150, 136, 0.8)",
+      "description": "my cats",
+      "createdBy": "Yoni Eli",
+      "createDate": "2023-02-03T19:46:26.449Z",
+      "lastUpdate": "2023-02-03T19:46:26.449Z",
+      "id": 9
+    },
+    {
+      "name": "dogs",
+      "color": "rgba(64, 169, 244, 1)",
+      "description": "woof",
+      "createdBy": "Roxxy",
+      "createDate": "2023-02-03T19:46:52.830Z",
+      "lastUpdate": "2023-02-03T19:46:52.830Z",
+      "id": 10
+    },
+    {
+      "name": "action movies",
+      "color": "rgba(38, 150, 136, 0.30000000000000004)",
+      "description": "boom",
+      "createdBy": "Danny Almog",
+      "createDate": "2023-02-03T19:48:07.016Z",
+      "lastUpdate": "2023-02-03T19:48:07.016Z",
+      "id": 11
     }
   ]
 }
