@@ -1,1 +1,50 @@
-<p>add-tag works!</p>
+<form class="tagForm" [formGroup]="tagForm" (ngSubmit)="onSubmit()">
+
+  <div class="title">
+    <span class="text">
+      {{ tag? 'Edit Tag' : 'Create New' }}
+    </span>
+  </div>
+
+  <div class="section">
+      <div class="label">Name: </div>
+      <mat-form-field class="val" appearance="outline">
+          <input matInput data-test="tag-name" placeholder="Type tag name..." formControlName="name" >
+          <mat-error *ngIf="tagForm.controls['name'].errors">
+              Required Field
+          </mat-error>
+      </mat-form-field>
+  </div>
+
+  <div class="section">
+      <div class="label">Color: </div>
+      <app-color-picker data-test="tag-color" formControlName="color"></app-color-picker>
+  </div>
+
+  <div class="section">
+      <div class="label">Description: </div>
+      <mat-form-field class="val" appearance="outline">
+          <textarea matInput data-test="tag-description" placeholder="Type tag description..." formControlName="description" ></textarea>
+          <mat-error *ngIf="tagForm.controls['description'].errors">
+              Required Field
+          </mat-error>
+      </mat-form-field>
+  </div>
+
+  <div class="section">
+    <div class="label">Created By: </div>
+    <mat-form-field class="val" appearance="outline">
+        <input matInput data-test="tag-created-by" formControlName="createdBy" >
+        <mat-error *ngIf="tagForm.controls['createdBy'].errors">
+            Required Field
+        </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="footer">
+      <button mat-raised-button data-test="tag-submit" color="primary" type="submit" [disabled]="tagForm.invalid" >
+          Submit
+      </button>
+  </div>
+
+</form>

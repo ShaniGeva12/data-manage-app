@@ -1,0 +1,23 @@
+.tagForm {
+  padding: 10px;
+
+  .title {
+    margin-bottom: 10px;
+  }
+
+  .label {
+    font-size: 14px;
+  }
+
+
+  ::ng-deep mat-form-field {
+    .mat-mdc-text-field-wrapper {
+      background: white;
+    }
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 15px;
+  }
+}
