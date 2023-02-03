@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SubSink } from 'subsink';
 import { TagsService } from '../../services/tags.service';
@@ -11,6 +11,7 @@ import { AddTagRequest, Tag } from '../../model/tag.model';
 })
 export class AddTagComponent {
   @Input() tag: Tag | undefined;
+  @Output() submitSuccess = new EventEmitter<boolean>();
 
   tagForm!: FormGroup;
 
@@ -67,6 +68,7 @@ export class AddTagComponent {
       this.tagForm.controls['lastUpdate'].setValue(this.tag.lastUpdate);
     } else {
       this.tagForm.controls['color'].setValue('');
+      this.tagForm.controls['createdBy'].enable();
       this.tagForm.reset();
     }
   }
@@ -80,6 +82,9 @@ export class AddTagComponent {
       let newTag : Tag = {...this.tag, ...this.tagForm.value}
       this.tagsService.updateTag(newTag);
     }
+    this.tag = undefined;
+    this.checkTagToEdit();
+    this.submitSuccess.emit(true);
     //TODO: loading and then closing the drawer if success, else show error msg
   }
 }

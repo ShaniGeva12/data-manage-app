@@ -1,18 +1,22 @@
 <div class="app">
-  <!-- <app-color-picker [formControl]="color"></app-color-picker> -->
-
   <mat-drawer-container class="" [hasBackdrop]="true">
     <mat-drawer-content>
       <div class="title">
         <div class="text"> Management Tool </div>
         <div class="buttons">
-          <button class="action-btn-icon" mat-icon-button aria-label="Grid View" >
-            <mat-icon>grid_view</mat-icon>
+          <button class="action-btn-icon"
+            mat-icon-button aria-label="Grid View"
+            [ngClass]="{'choosen-view' : view === viewOptions.Grid}"
+            (click)="toggleView(viewOptions.Grid)">
+              <mat-icon>grid_view</mat-icon>
           </button>
-          <button class="action-btn-icon" mat-icon-button aria-label="List View" >
-            <mat-icon>menu</mat-icon>
+          <button class="action-btn-icon"
+            mat-icon-button aria-label="List View"
+            [ngClass]="{'choosen-view' : view === viewOptions.List}"
+            (click)="toggleView(viewOptions.List)">
+              <mat-icon>menu</mat-icon>
           </button>
-          <button class="action-btn-icon" mat-icon-button aria-label="Add Tag" (click)="drawer.toggle()" >
+          <button class="action-btn-icon" mat-icon-button aria-label="Add Tag" (click)="refreshDrawer()" >
             <mat-icon>add_circle</mat-icon>
           </button>
         </div>
@@ -20,20 +24,19 @@
 
       <div class="filter-container">
         <mat-form-field appearance="outline">
-          <!-- <mat-label>Find by name...</mat-label> -->
           <input matInput placeholder="Find by name...">
           <mat-icon matPrefix>search</mat-icon>
         </mat-form-field>
       </div>
 
-      <app-tags (tagRowClicked)="openEditTag($event)"></app-tags>
+      <app-tags [view]="view" (tagRowClicked)="openEditTag($event)"></app-tags>
     </mat-drawer-content>
     <mat-drawer class="mat-elevation-z8" #drawer mode="over" position="end">
 
       <div class="drawer-inner-container ">
-        <app-add-tag [tag]="tagToEdit"></app-add-tag>
+        <app-add-tag [tag]="tagToEdit" (submitSuccess)="tagSubmitted($event)"></app-add-tag>
 
-        <button class="action-btn-icon" mat-icon-button aria-label="Grid View" (click)="createNewTag()"  >
+        <button class="action-btn-icon" mat-icon-button aria-label="Grid View" (click)="refreshDrawer()"  >
           <mat-icon>close</mat-icon>
         </button>
       </div>

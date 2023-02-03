@@ -9,12 +9,16 @@ import { TagsComponent } from './components/tags/tags.component';
 import { AddTagComponent } from './components/tags/components/add-tag/add-tag.component';
 import { MaterialModule } from './shared/material.module';
 import { HttpClientModule } from '@angular/common/http';
+import { GridViewComponent } from './components/tags/components/grid-view/grid-view.component';
+import { ListViewComponent } from './components/tags/components/list-view/list-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TagsComponent,
     AddTagComponent,
+    GridViewComponent,
+    ListViewComponent,
 
   ],
   imports: [

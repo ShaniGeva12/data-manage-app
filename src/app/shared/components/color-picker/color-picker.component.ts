@@ -73,10 +73,14 @@ export class ColorPickerComponent implements OnInit, ControlValueAccessor {
     if (color instanceof ColorRgba) {
       if(this.colorsPaletteRgba.find(colorsArr => colorsArr.find(item => item.compare(color)))) {
         this.colorSelect.setValue(color.getColorString());
+      } else {
+        this.colorSelect.reset();
       }
     } else {
       if(this.colorsPaletteString.find(colorsArr => colorsArr.find(item => item == color))) {
         this.colorSelect.setValue(color);
+      } else {
+        this.colorSelect.reset();
       }
     }
   }

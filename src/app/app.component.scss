@@ -15,20 +15,16 @@
   }
 
   .action-btn {
-    &-fab {
-      background: $action-btns;
-      color: white;
-
-      &:hover {
-        background: $action-btns-hover;
-      }
-    }
 
     &-icon {
       color: $action-btns;
 
       &:hover {
         color: $action-btns-hover;
+      }
+
+      &.choosen-view {
+        color: $action-btns-choosen;
       }
     }
 

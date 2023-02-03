@@ -4,6 +4,7 @@ import { SubSink } from 'subsink';
 import { ColorRgba } from './shared/model/color-rgba';
 import { Tag } from './components/tags/model/tag.model';
 import { MatDrawer } from '@angular/material/sidenav';
+import { ItemsView } from './components/tags/model/items-view';
 
 @Component({
   selector: 'app-root',
@@ -18,24 +19,18 @@ export class AppComponent {
   subs = new SubSink();
 
   tagToEdit: Tag | undefined;
-  // color = new FormControl();
-  // myColor = new ColorRgba(103, 58, 183, 1);
-  // myStringColor = 'rgba(244, 67, 54, 1)';
+
+  viewOptions = ItemsView;
+  view = ItemsView.List;
 
   ngOnInit(): void {
-
-    // this.subs.sink = this.color.valueChanges.subscribe(value => {
-    //   console.log(value);
-    // });
-
-    // this.color.setValue(this.myStringColor);
   }
 
   ngOnDestroy() {
     this.subs.unsubscribe();
   }
 
-  createNewTag() {
+  refreshDrawer() {
     this.tagToEdit = undefined;
     this.drawer.toggle();
   }
@@ -43,5 +38,15 @@ export class AppComponent {
   openEditTag(tag: Tag) {
     this.tagToEdit = tag;
     this.drawer.open();
+  }
+
+  tagSubmitted(isSuccess: boolean) {
+    if(isSuccess) {
+      this.refreshDrawer();
+    }
+  }
+
+  toggleView(newView: ItemsView) {
+    this.view = newView;
   }
 }
