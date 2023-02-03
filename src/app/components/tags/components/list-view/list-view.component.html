@@ -31,6 +31,11 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr class="mat-elevation-z8" mat-row *matRowDef="let row; columns: displayedColumns;" (click)="rowClicked(row)"></tr>
+
+    <!-- Row shown when there is no matching data.-->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell"> No data </td>
+    </tr>
   </table>
 
 </div>

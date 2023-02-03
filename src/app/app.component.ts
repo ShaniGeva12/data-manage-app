@@ -5,6 +5,7 @@ import { ColorRgba } from './shared/model/color-rgba';
 import { Tag } from './components/tags/model/tag.model';
 import { MatDrawer } from '@angular/material/sidenav';
 import { ItemsView } from './components/tags/model/items-view';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -25,11 +26,15 @@ export class AppComponent {
   view = ItemsView.List;
   // view = ItemsView.Grid;
 
+  filterSearch = new FormControl();
+
   constructor(
-    private cd: ChangeDetectorRef,
     ) { }
 
   ngOnInit(): void {
+    // this.subs.sink = this.filterSearch.valueChanges.subscribe(val => {
+    //   console.log(val);
+    // });
   }
 
   ngOnDestroy() {

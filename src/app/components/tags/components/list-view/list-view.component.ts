@@ -17,9 +17,10 @@ export class ListViewComponent {
   table!: MatTable<any>;
   @ViewChild(MatSort, { static: true })
   sort!: MatSort;
-  @Input() paginator!: MatPaginator;
 
+  @Input() paginator!: MatPaginator;
   @Input() tagsData : any;
+  @Input() filter = '';
   @Output() tagRowClicked = new EventEmitter<Tag>();
 
   dataSource = new MatTableDataSource<any>();
@@ -45,6 +46,7 @@ export class ListViewComponent {
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.dataSource.filter = this.filter;
   }
 
   ngOnDestroy(): void {

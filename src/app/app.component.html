@@ -24,12 +24,16 @@
 
       <div class="filter-container">
         <mat-form-field appearance="outline">
-          <input matInput placeholder="Find by name...">
+          <input matInput [formControl]="filterSearch" placeholder="Find by name...">
           <mat-icon matPrefix>search</mat-icon>
         </mat-form-field>
       </div>
 
-      <app-tags [view]="view" (tagRowClicked)="openEditTag($event)"></app-tags>
+      <app-tags
+        [view]="view"
+        [filterString]="filterSearch.value"
+        (tagRowClicked)="openEditTag($event)">
+      </app-tags>
     </mat-drawer-content>
     <mat-drawer class="mat-elevation-z8" #drawer mode="over" position="end">
 

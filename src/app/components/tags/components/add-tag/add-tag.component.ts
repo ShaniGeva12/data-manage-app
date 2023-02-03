@@ -69,9 +69,10 @@ export class AddTagComponent {
       this.tagForm.controls['createDate'].setValue(this.tag.createDate);
       this.tagForm.controls['lastUpdate'].setValue(this.tag.lastUpdate);
     } else {
-      this.tagForm.controls['color'].setValue('');
       this.tagForm.controls['createdBy'].enable();
       this.tagForm.reset();
+      this.tagForm.markAsPristine();
+      this.tagForm.updateValueAndValidity();
     }
   }
 
@@ -84,8 +85,7 @@ export class AddTagComponent {
       let newTag : Tag = {...this.tag, ...this.tagForm.value}
       this.tagsService.updateTag(newTag);
     }
-    this.tag = undefined;
-    this.checkTagToEdit();
+
     this.submitSuccess.emit(true);
     //TODO: loading and then closing the drawer if success, else show error msg
   }

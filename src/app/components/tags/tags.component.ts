@@ -19,6 +19,7 @@ export class TagsComponent {
 
 
   @Input() view = ItemsView.List;
+  @Input() filterString = '';
   @Output() tagRowClicked = new EventEmitter<Tag>();
 
   dataSource$: Observable<Tag[]> = this.tagsService.tags$;
@@ -27,9 +28,18 @@ export class TagsComponent {
 
   subs: SubSink = new SubSink();
 
+  filteredTags: Observable<Tag[]> | undefined;
+  lastFilter: string = '';
+
+
   constructor(private tagsService: TagsService){}
 
   ngOnInit(): void {
+    // this.filteredTags = this.filterSearch.valueChanges.pipe(
+    //   startWith<string | Tag[]>(''),
+    //   map((value: any) => (typeof value === 'string' ? value : this.lastFilter)),
+    //   map((filter: any) => this._filter(filter))
+    // );
   }
 
   ngAfterViewInit(): void {
@@ -47,5 +57,15 @@ export class TagsComponent {
   onPageChanged(pageEvent: PageEvent){
     this.pageEvent = pageEvent;
   }
+
+  // private _filter(value: string): Tag[] {
+  //   const filterValue = value.toLowerCase();
+  //   this.lastFilter = filterValue;
+
+  //   if (filterValue) {
+
+  //   }
+  //   return this.dataSource ? this.dataSource.slice() : null;
+  // }
 
 }

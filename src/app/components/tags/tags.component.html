@@ -3,6 +3,7 @@
     *ngIf="view === viewOptions.List; else gridView"
     [tagsData]="dataSource"
     [paginator]="paginator"
+    [filter]="filterString"
     (tagRowClicked)="tagClicked($event)">
   </app-list-view>
 
