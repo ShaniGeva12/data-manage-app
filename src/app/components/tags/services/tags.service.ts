@@ -29,10 +29,10 @@ export class TagsService {
     );
   }
 
-  private postTag(band :AddTagRequest){
-    return this.http.post<Tag>(this.TagsServiceUrl, band)
+  private postTag(tag :AddTagRequest){
+    return this.http.post<Tag>(this.TagsServiceUrl, tag)
     .pipe(
-      catchError(err => this.handleError(err, 'postTag', band))
+      catchError(err => this.handleError(err, 'postTag', tag))
     );
   }
 
@@ -58,12 +58,12 @@ export class TagsService {
     return throwError('Something went wrong, please try again later.' + methodName + ' ' + obj);
   }
 
-  addTag(band: AddTagRequest) {
-    this.postTag(band)
+  addTag(tag: AddTagRequest) {
+    this.postTag(tag)
       .pipe(
         tap(() => this.refreshTagsList()),
         catchError(err =>
-        this.handleError(err, 'addTag', 'AddTagRequest: ' + band)
+        this.handleError(err, 'addTag', 'AddTagRequest: ' + tag)
       ))
     .subscribe();
   }
