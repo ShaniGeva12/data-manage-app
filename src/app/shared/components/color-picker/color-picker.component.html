@@ -16,4 +16,7 @@
       </ng-container>
     </mat-grid-list>
   </mat-select>
+  <mat-error *ngIf="isValidatorRequired && colorSelect.errors">
+    Required Field
+  </mat-error>
 </mat-form-field>

@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, OnInit, Self, ViewChild } from '@angular/core';
+import { AbstractControl, ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgControl, ValidationErrors, Validators } from '@angular/forms';
 import { MatSelect } from '@angular/material/select';
 import { ColorRgba } from '../../model/color-rgba';
 import { SubSink } from 'subsink';
@@ -14,7 +14,13 @@ import { SubSink } from 'subsink';
       provide: NG_VALUE_ACCESSOR,
       useExisting: ColorPickerComponent,
       multi: true
-    }]
+    },
+    {
+      provide: NG_VALIDATORS,
+      useExisting: ColorPickerComponent,
+      multi: true
+    }
+  ]
 })
 export class ColorPickerComponent implements OnInit, ControlValueAccessor {
   @ViewChild('matSelect', { read: MatSelect })
@@ -40,6 +46,7 @@ export class ColorPickerComponent implements OnInit, ControlValueAccessor {
 
   isOpen = false;
   disabled = false;
+  isValidatorRequired = false;
   onChanged: any = (color: string) => {};
   onTouched: any = () => {};
   colorValue: any;
@@ -67,6 +74,19 @@ export class ColorPickerComponent implements OnInit, ControlValueAccessor {
       }
     }
     return colorsPalette;
+  }
+
+  validate(control: AbstractControl): ValidationErrors | null {
+    let validate: ValidationErrors | null = null;
+    this.isValidatorRequired = control.hasValidator(Validators.required) as boolean;
+    if (this.isValidatorRequired) {
+      this.colorSelect.setValidators(Validators.required);
+      const forbidden = control.value?.length === 0;
+      validate = forbidden ? { required: { value: control.value } } : null;
+    } else {
+      this.colorSelect.setValidators([]);
+    }
+    return validate;
   }
 
   writeValue(color: string | ColorRgba): void {
