@@ -3,7 +3,7 @@
     *ngIf="view === viewOptions.List; else gridView"
     [tagsData]="dataSource"
     [paginator]="paginator"
-    [filter]="filterString"
+    [filterString]="filterString"
     (tagRowClicked)="tagClicked($event)">
   </app-list-view>
 
@@ -11,6 +11,7 @@
     <app-grid-view
       [tagsData]="dataSource"
       [paginator]="paginator"
+      [filterString]="filterString"
       [pageEvent]="pageEvent"
       (tagClicked)="tagClicked($event)">
     </app-grid-view>
@@ -18,7 +19,7 @@
 
   <mat-paginator
     [pageSize]="10"
-    [length]="dataSource.length"
+    [length]="dataLength"
     [pageSizeOptions]="[5, 10, 20]"
     (page)="onPageChanged($event)"
     showFirstLastButtons

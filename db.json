@@ -152,6 +152,15 @@
       "createDate": "2023-02-03T22:51:35.818Z",
       "lastUpdate": "2023-02-03T22:51:35.818Z",
       "id": 16
+    },
+    {
+      "name": "my cat",
+      "color": "rgba(0, 0, 0, 1)",
+      "description": "car",
+      "createdBy": "Shani",
+      "createDate": "2023-02-04T11:36:04.616Z",
+      "lastUpdate": "2023-02-04T11:36:04.615Z",
+      "id": 17
     }
   ]
 }

@@ -5,6 +5,7 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { SubSink } from 'subsink';
 import { Tag } from '../../model/tag.model';
 import { TagsService } from '../../services/tags.service';
+import { Filter } from '../utils/filter';
 
 @Component({
   selector: 'app-list-view',
@@ -20,19 +21,23 @@ export class ListViewComponent {
 
   @Input() paginator!: MatPaginator;
   @Input() tagsData : any;
-  @Input() filter = '';
+  @Input() filterString = '';
   @Output() tagRowClicked = new EventEmitter<Tag>();
+  @Output() filteredLength = new EventEmitter<number>();
 
   dataSource = new MatTableDataSource<any>();
   displayedColumns: string[] = ['color', 'name', 'createDate', 'lastUpdate', 'createdBy'];
 
   subs: SubSink = new SubSink();
+  lastFilter: string = '';
+  filter = new Filter();
 
   constructor(private tagsService: TagsService){}
 
   ngOnChanges(changes: SimpleChanges) {
-    if(changes['tagsData'] ){
-      this.dataSource.data = changes['tagsData'].currentValue;
+    if(changes['tagsData'] || changes['filterString']){
+      this.dataSource.data = this.filter.getTags((this.filterString || ''), this.tagsData);
+      this.filteredLength.emit(this.dataSource.data.length);
     }
     if(changes['paginator'] ){
       this.dataSource.paginator = this.paginator;
@@ -46,7 +51,6 @@ export class ListViewComponent {
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    this.dataSource.filter = this.filter;
   }
 
   ngOnDestroy(): void {

@@ -3,6 +3,7 @@ import { TagsService } from '../../services/tags.service';
 import { Observable } from 'rxjs';
 import { Tag } from '../../model/tag.model';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { Filter } from '../utils/filter';
 
 @Component({
   selector: 'app-grid-view',
@@ -11,31 +12,49 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GridViewComponent {
-  @Input() tagsData : any = [];
+  @Input() tagsData : any[] = [];
   @Input() paginator!: MatPaginator;
   @Input() pageEvent: PageEvent | undefined = undefined;
+  @Input() filterString = '';
   @Output() tagClicked = new EventEmitter<Tag>();
+  @Output() filteredLength = new EventEmitter<number>();
 
   activePageDataChunk: Tag[] = [];
+  filteredTags: Tag[] = this.tagsData;
+  filter = new Filter();
 
   constructor(){
 
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if(changes['tagsData'] && this.paginator){
-      this.activePageDataChunk = this.tagsData.slice(0, this.paginator.pageSize);
+    // if(changes['tagsData']){
+
+    // }
+    if((changes['tagsData'] || changes['filterString']) && this.paginator){
+      this.filteredTags = this.filter.getTags((this.filterString || ''), this.tagsData);
+      this.filteredLength.emit(this.filteredTags.length);
+      this.activePageDataChunk = this.filteredTags.slice(0, this.paginator.pageSize);
     }
+    /*
+    if(changes['tagsData'] || changes['filterString']){
+      this.dataSource.data = this.filter.getTags((this.filterString || ''), this.tagsData);
+    }
+    */
     if(changes['pageEvent'] ){
       this.onPageChanged(changes['pageEvent'].currentValue);
     }
+  }
+
+  ngOnInit() : void {
+    this.filteredLength.emit(this.tagsData.length);
   }
 
   onPageChanged(pageEvent: PageEvent) {
     if(pageEvent){
       let firstCut = pageEvent.pageIndex * pageEvent.pageSize;
       let secondCut = firstCut + pageEvent.pageSize;
-      this.activePageDataChunk = this.tagsData.slice(firstCut, secondCut);
+      this.activePageDataChunk = this.filteredTags.slice(firstCut, secondCut);
     }
   }
 
