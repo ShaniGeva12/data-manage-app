@@ -24,7 +24,6 @@ export class AppComponent {
 
   viewOptions = ItemsView;
   view = ItemsView.List;
-  // view = ItemsView.Grid;
 
   filterSearch = new FormControl();
 
@@ -32,9 +31,6 @@ export class AppComponent {
     ) { }
 
   ngOnInit(): void {
-    // this.subs.sink = this.filterSearch.valueChanges.subscribe(val => {
-    //   console.log(val);
-    // });
   }
 
   ngOnDestroy() {
