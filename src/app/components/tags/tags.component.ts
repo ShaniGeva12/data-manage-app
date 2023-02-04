@@ -24,10 +24,7 @@ export class TagsComponent {
 
   filter = new Filter();
 
-  dataSource$: Observable<Tag[]> = this.tagsService.tags$.pipe(tap((tags) => {
-    let filtered = this.filter.getTags((this.filterString || ''), tags);
-    this.dataLength = filtered.length;
-  }));
+  dataSource$: Observable<Tag[]> = this.tagsService.tags$;
   viewOptions = ItemsView;
   pageEvent: PageEvent | undefined = undefined;
 
@@ -50,7 +47,6 @@ export class TagsComponent {
   }
 
   ngAfterViewInit(): void {
-    // this.dataSource.paginator = this.paginator;
   }
 
   ngOnDestroy(): void {
@@ -64,10 +60,5 @@ export class TagsComponent {
   onPageChanged(pageEvent: PageEvent) {
     this.pageEvent = pageEvent;
   }
-
-  // onDataLengthChanged(length: number) {
-  //   this.dataLength = length;
-  // }
-
 
 }

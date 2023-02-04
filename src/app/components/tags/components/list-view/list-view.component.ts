@@ -23,7 +23,6 @@ export class ListViewComponent {
   @Input() tagsData : any;
   @Input() filterString = '';
   @Output() tagRowClicked = new EventEmitter<Tag>();
-  @Output() filteredLength = new EventEmitter<number>();
 
   dataSource = new MatTableDataSource<any>();
   displayedColumns: string[] = ['color', 'name', 'createDate', 'lastUpdate', 'createdBy'];
@@ -37,7 +36,6 @@ export class ListViewComponent {
   ngOnChanges(changes: SimpleChanges) {
     if(changes['tagsData'] || changes['filterString']){
       this.dataSource.data = this.filter.getTags((this.filterString || ''), this.tagsData);
-      this.filteredLength.emit(this.dataSource.data.length);
     }
     if(changes['paginator'] ){
       this.dataSource.paginator = this.paginator;
