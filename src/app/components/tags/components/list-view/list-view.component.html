@@ -34,7 +34,14 @@
 
     <!-- Row shown when there is no matching data.-->
     <tr class="mat-row" *matNoDataRow>
-      <td class="mat-cell"> No data </td>
+      <td class="mat-cell">
+        <div *ngIf="!tagsData; else noData">
+          <app-loading></app-loading>
+        </div>
+        <ng-template #noData>
+          No data to display
+        </ng-template>
+      </td>
     </tr>
   </table>
 

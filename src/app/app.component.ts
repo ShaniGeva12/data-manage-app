@@ -23,8 +23,8 @@ export class AppComponent {
   tagToEdit: Tag | undefined;
 
   viewOptions = ItemsView;
-  // view = ItemsView.List;
-  view = ItemsView.Grid;
+  view = ItemsView.List;
+  // view = ItemsView.Grid;
 
   filterSearch = new FormControl();
 
