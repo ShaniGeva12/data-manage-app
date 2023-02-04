@@ -38,7 +38,7 @@
     <mat-drawer class="mat-elevation-z8" #drawer mode="over" position="end">
 
       <div class="drawer-inner-container ">
-        <app-add-tag class="add-tag" [isShown]="drawer.opened" [tag]="tagToEdit" (submitSuccess)="tagSubmitted($event)"></app-add-tag>
+        <app-add-tag class="add-tag" *ngIf="drawer.opened" [tag]="tagToEdit" (submitSuccess)="tagSubmitted($event)"></app-add-tag>
 
         <button class="action-btn-icon" mat-icon-button aria-label="Grid View" (click)="refreshDrawer()"  >
           <mat-icon>close</mat-icon>
