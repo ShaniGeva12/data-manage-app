@@ -4,7 +4,6 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { SubSink } from 'subsink';
 import { Tag } from '../../model/tag.model';
-import { TagsService } from '../../services/tags.service';
 import { Filter } from '../utils/filter';
 
 @Component({

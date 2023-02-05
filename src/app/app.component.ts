@@ -1,7 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { SubSink } from 'subsink';
-import { ColorRgba } from './shared/model/color-rgba';
 import { Tag } from './components/tags/model/tag.model';
 import { MatDrawer } from '@angular/material/sidenav';
 import { ItemsView } from './components/tags/model/items-view';

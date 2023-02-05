@@ -1,6 +1,4 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
-import { TagsService } from '../../services/tags.service';
-import { Observable } from 'rxjs';
 import { Tag } from '../../model/tag.model';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Filter } from '../utils/filter';
