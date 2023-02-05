@@ -17,16 +17,16 @@ export class LoaderInterceptor implements HttpInterceptor {
   constructor(private loadingService: LoadingService, public dialog: MatDialog) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    this.loadingService.show();
+    this.loadingService.increaseLoadersCount();
     return next.handle(request).pipe(
       tap({
         next: (event: HttpEvent<any>) => {
           if (event instanceof HttpResponse) {
-                this.loadingService.hide();
+                this.loadingService.decreaseLoadersCount();
               }
          },
         error: err => {
-          this.loadingService.hide();
+          this.loadingService.decreaseLoadersCount();
           this.dialog.open(DialogComponent, {
             data: {
               title: 'Error',

@@ -12,12 +12,12 @@ export class LoadingService {
     this.visibility = new BehaviorSubject(false);
   }
 
-  show() {
+  increaseLoadersCount() {
     this.visibility.next(true);
     this.count++;
   }
 
-  hide() {
+  decreaseLoadersCount() {
     this.count--;
     if(this.count === 0) {
       this.visibility.next(false);
