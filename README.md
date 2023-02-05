@@ -3,7 +3,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
 
-Make sure you have you have Angular CLI installed on your machine if you wish to run this project locally.
+Make sure you have Angular CLI installed on your machine if you wish to run this project locally.
 
 ## Install JSON Server
 Run `npm install -g json-server`. 
