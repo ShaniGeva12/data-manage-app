@@ -26,7 +26,7 @@ export class LoaderInterceptor implements HttpInterceptor {
               }
          },
         error: err => {
-          console.error(err);
+          // console.error(err);
           this.loadingService.hide();
           this.dialog.open(DialogComponent, {
             data: {
