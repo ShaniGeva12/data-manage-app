@@ -8,9 +8,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TagsComponent } from './components/tags/tags.component';
 import { AddTagComponent } from './components/tags/components/add-tag/add-tag.component';
 import { MaterialModule } from './shared/material.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { GridViewComponent } from './components/tags/components/grid-view/grid-view.component';
 import { ListViewComponent } from './components/tags/components/list-view/list-view.component';
+import { LoaderInterceptor } from './core/loader.interceptor';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,7 @@ import { ListViewComponent } from './components/tags/components/list-view/list-v
     AddTagComponent,
     GridViewComponent,
     ListViewComponent,
-
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,14 @@ import { ListViewComponent } from './components/tags/components/list-view/list-v
   ],
   exports: [
   ],
-  providers: [HttpClientModule],
+  providers: [
+    HttpClientModule,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

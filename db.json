@@ -2,11 +2,11 @@
   "tags": [
     {
       "id": 0,
-      "color": "rgba(250, 235, 59, 0.7000000000000001)",
+      "color": "rgba(38, 150, 136, 1)",
       "name": "Car accident",
       "description": "two cars crashed at 2nd street",
       "createDate": "2023-02-01T15:46:46.654Z",
-      "lastUpdate": "2023-02-04T14:52:43.117Z",
+      "lastUpdate": "2023-02-05T11:56:29.698Z",
       "createdBy": "Roni Blondi"
     },
     {
