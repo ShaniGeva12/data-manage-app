@@ -43,7 +43,7 @@ export class TagsService {
       );
   }
 
-  private handleError(error: HttpErrorResponse, methodName? : string, obj? : any) {
+  private handleError(error: HttpErrorResponse, methodName? : string, obj? : any) : Observable<never> {
     if (error.status === 0) {
       // A client-side or network error occurred
       console.error('An error occurred:', error.error);
