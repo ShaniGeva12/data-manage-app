@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit, Self, ViewChild } from '@angular/core';
-import { AbstractControl, ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgControl, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validators } from '@angular/forms';
 import { MatSelect } from '@angular/material/select';
 import { ColorRgba } from '../../model/color-rgba';
 import { SubSink } from 'subsink';
