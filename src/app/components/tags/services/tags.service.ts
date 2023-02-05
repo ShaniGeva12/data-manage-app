@@ -37,7 +37,7 @@ export class TagsService {
   }
 
   private putTag(tag: Tag): Observable<Tag> {
-    return this.http.put<Tag>( `${this.TagsServiceUrl}/${tag.id}` , <AddTagRequest>tag)
+    return this.http.put<Tag>( `${this.TagsServiceUrl}/${tag.id}X` , <AddTagRequest>tag)
       .pipe(
         catchError(err => this.handleError(err, 'putTag', tag))
       );
@@ -57,7 +57,7 @@ export class TagsService {
       console.error('An error occurred:', error.error);
     } else {
       console.error(
-        `Backend returned code ${error.status} from method ${methodName}, body was: `, error.error, obj);
+        `Backend returned code ${error.status} from method "${methodName}". Full error and obj: `, error, obj);
     }
     return throwError(() => error);
   }
@@ -66,29 +66,21 @@ export class TagsService {
     return this.postTag(tag)
       .pipe(
         tap(() => this.refreshTagsList()),
-        catchError(err =>
-        this.handleError(err, 'addTag', 'AddTagRequest: ' + tag)
-      ));
-    // .subscribe();
+      );
   }
 
   updateTag(tag: Tag) : Observable<Tag> {
     return this.putTag(tag)
       .pipe(
         tap(() => this.refreshTagsList()),
-        catchError(err =>
-        this.handleError(err, 'updateTag', 'Tag: ' + tag)
-      ))
-    //.subscribe();
+      )
   }
 
   removeTag(tagId: number) {
     this.deleteTag(tagId)
       .pipe(
         tap(() => this.refreshTagsList()),
-        catchError(err =>
-          this.handleError(err, 'removeTag', 'tagId: ' + tagId)
-      ))
+      )
     .subscribe();
   }
 }
