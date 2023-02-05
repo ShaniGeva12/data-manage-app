@@ -6,16 +6,13 @@
   mat-drawer-container {
     background: #FFFF;
     min-height: 75vh;
-    // display: contents;
 
     mat-drawer-content {
-      // display: contents;
       padding: 20px;
     }
   }
 
   .action-btn {
-
     &-icon {
       color: $action-btns;
 

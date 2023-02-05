@@ -27,9 +27,6 @@ export class AddTagComponent {
     this.setForm();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-  }
-
   ngOnDestroy(): void {
     this.subs.unsubscribe();
   }
@@ -72,6 +69,7 @@ export class AddTagComponent {
 
   onSubmit() {
     this.tagForm.controls['lastUpdate'].setValue(new Date());
+
     if(!this.tag) {
       this.tagForm.controls['createDate'].setValue(new Date());
       this.subs.sink = this.tagsService.addTag(<AddTagRequest>this.tagForm.value).subscribe({
@@ -83,8 +81,5 @@ export class AddTagComponent {
         next: () => { this.submitSuccess.emit(true) },
       });
     }
-
-    // this.submitSuccess.emit(true);
-    //TODO: loading and then closing the drawer if success, else show error msg
   }
 }

@@ -1,4 +1,4 @@
-<div *ngIf="(dataSource$ | async) as dataSource; else loading">
+<div *ngIf="(dataSource$ | async) as dataSource">
   <app-list-view
     *ngIf="view === viewOptions.List; else gridView"
     [tagsData]="dataSource"
@@ -26,7 +26,3 @@
     aria-label="Select page">
   </mat-paginator>
 </div>
-
-<ng-template #loading>
-  <app-loading></app-loading>
-</ng-template>

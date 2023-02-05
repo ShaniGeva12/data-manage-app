@@ -1,5 +1,4 @@
 <div class="table-container">
-
   <table mat-table [dataSource]="dataSource" matSort class="tags-table">
 
     <ng-container matColumnDef="color">
@@ -32,17 +31,11 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr class="mat-elevation-z8" mat-row *matRowDef="let row; columns: displayedColumns;" (click)="rowClicked(row)"></tr>
 
-    <!-- Row shown when there is no matching data.-->
     <tr class="mat-row" *matNoDataRow>
       <td class="mat-cell">
-        <div *ngIf="!tagsData; else noData">
-          <app-loading></app-loading>
-        </div>
-        <ng-template #noData>
           No data to display
-        </ng-template>
       </td>
     </tr>
-  </table>
 
+  </table>
 </div>

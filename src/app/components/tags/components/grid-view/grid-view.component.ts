@@ -23,7 +23,6 @@ export class GridViewComponent {
   filter = new Filter();
 
   constructor(){
-
   }
 
   ngOnChanges(changes: SimpleChanges) {
