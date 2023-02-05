@@ -7,7 +7,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
   providedIn: 'root'
 })
 export class TagsService {
-  private readonly TagsServiceUrl = 'http://localhost:3002/tagsX';
+  private readonly TagsServiceUrl = 'http://localhost:3002/tags';
 
   private _tags$: BehaviorSubject<Tag[]> = new BehaviorSubject<Tag[]>([]);
   public tags$: Observable<Tag[]> = this._tags$.asObservable();
