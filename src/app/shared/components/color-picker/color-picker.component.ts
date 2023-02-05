@@ -66,14 +66,13 @@ export class ColorPickerComponent implements OnInit, ControlValueAccessor {
   }
 
   createColorsPalette(basicRgbaColors: ColorRgba[]) : ColorRgba[][] {
-    let colorsPalette: ColorRgba[][] = [];
-    for(let i = 0; i < basicRgbaColors.length; i++) {
-      colorsPalette[i] = [];
-      for(let j = 0; j< 9; j++) {
-        colorsPalette[i][j] = ColorRgba.createFromColor(basicRgbaColors[i], j*0.1);
+    return basicRgbaColors.map(color => {
+      const shades = [];
+      for (let i = 0; i < 9; i++) {
+        shades.push(ColorRgba.createFromColor(color, i * 0.1));
       }
-    }
-    return colorsPalette;
+      return shades;
+    });
   }
 
   validate(control: AbstractControl): ValidationErrors | null {
