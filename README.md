@@ -6,13 +6,14 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 Run `npm install -g json-server`. 
 You can read more about [JSON Server](https://www.npmjs.com/package/json-server)
 ## Development DB
-(After JSON Server is installed)
-Run `json-server --watch db.json --port 3002` to activate local db. 
+    (After JSON Server is installed)
+    Run `json-server --watch db.json --port 3002` to activate local db. 
+    Please note that the api calls for this port (3002), so make sure you specify it.
 
 
 ## Development server
-Run `ng serve --port 5001` for a dev server. Navigate to `http://localhost:5002/`. 
-The application will automatically reload if you change any of the source files.
+Run `ng serve --port 5002` for a dev server. Navigate to `http://localhost:5002/`. 
+    The application will automatically reload if you change any of the source files.
 
 ## ![separator](src/assets/imgs/line-separator.png) 
 
