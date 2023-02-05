@@ -8,13 +8,13 @@
         <div class="buttons">
           <button class="action-btn-icon"
             mat-icon-button aria-label="Grid View"
-            [ngClass]="{'choosen-view' : view === viewOptions.Grid}"
+            [ngClass]="{'chosen-view' : view === viewOptions.Grid}"
             (click)="toggleView(viewOptions.Grid)">
               <mat-icon>grid_view</mat-icon>
           </button>
           <button class="action-btn-icon"
             mat-icon-button aria-label="List View"
-            [ngClass]="{'choosen-view' : view === viewOptions.List}"
+            [ngClass]="{'chosen-view' : view === viewOptions.List}"
             (click)="toggleView(viewOptions.List)">
               <mat-icon>menu</mat-icon>
           </button>
