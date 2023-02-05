@@ -43,21 +43,13 @@ export class TagsService {
       );
   }
 
-  private deleteTag(id: number): Observable<unknown> {
-    const url = this.TagsServiceUrl + '/' + id;
-    return this.http.delete(url)
-      .pipe(
-        catchError(err => this.handleError(err, 'deleteTag', id))
-      );
-  }
-
   private handleError(error: HttpErrorResponse, methodName? : string, obj? : any) {
     if (error.status === 0) {
       // A client-side or network error occurred
       console.error('An error occurred:', error.error);
     } else {
       console.error(
-        `Backend returned code ${error.status} from method "${methodName}". Full error and obj: `, error, obj);
+        `Backend returned code ${error.status} from method "${methodName}". Full error and obj: `, { Error: error, ObjectSent: obj });
     }
     return throwError(() => error);
   }
@@ -74,13 +66,5 @@ export class TagsService {
       .pipe(
         tap(() => this.refreshTagsList()),
       )
-  }
-
-  removeTag(tagId: number) {
-    this.deleteTag(tagId)
-      .pipe(
-        tap(() => this.refreshTagsList()),
-      )
-    .subscribe();
   }
 }
