@@ -3,7 +3,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
 
+.overlay {
   position: fixed;
   z-index: 8;
   width: 100%;

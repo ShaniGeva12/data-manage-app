@@ -7,7 +7,7 @@ import { SharedModule } from './shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TagsComponent } from './components/tags/tags.component';
 import { AddTagComponent } from './components/tags/components/add-tag/add-tag.component';
-import { MaterialModule } from './shared/material.module';
+import { MaterialModule } from './shared/material/material.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { GridViewComponent } from './components/tags/components/grid-view/grid-view.component';
 import { ListViewComponent } from './components/tags/components/list-view/list-view.component';
