@@ -74,13 +74,17 @@ export class AddTagComponent {
     this.tagForm.controls['lastUpdate'].setValue(new Date());
     if(!this.tag) {
       this.tagForm.controls['createDate'].setValue(new Date());
-      this.tagsService.addTag(<AddTagRequest>this.tagForm.value);
+      this.subs.sink = this.tagsService.addTag(<AddTagRequest>this.tagForm.value).subscribe({
+        next: () => { this.submitSuccess.emit(true) },
+      });
     } else {
       let newTag : Tag = {...this.tag, ...this.tagForm.value}
-      this.tagsService.updateTag(newTag);
+      this.subs.sink = this.tagsService.updateTag(newTag).subscribe({
+        next: () => { this.submitSuccess.emit(true) },
+      });
     }
 
-    this.submitSuccess.emit(true);
+    // this.submitSuccess.emit(true);
     //TODO: loading and then closing the drawer if success, else show error msg
   }
 }
