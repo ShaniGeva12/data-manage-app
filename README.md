@@ -2,6 +2,9 @@
 ## ![App Demo](src/assets/imgs/DataManageApp_Demo.gif) 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
+
+Make sure you have you have Angular CLI installed on your machine if you wish to run this project locally.
+
 ## Install JSON Server
 Run `npm install -g json-server`. 
 
@@ -13,6 +16,8 @@ Run `json-server --watch db.json --port 3002` to activate local db.
 
 Please note that the api calls for this port (3002), so make sure you specify it.
 
+## Install Dependencies
+Run `npm install` to get all dependencies locally.
 
 ## Development server
 Run `ng serve --port 5002` for a dev server. Navigate to [http://localhost:5002/](http://localhost:5002/).
