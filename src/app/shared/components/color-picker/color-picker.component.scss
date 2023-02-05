@@ -4,13 +4,13 @@
 }
 
 ::ng-deep mat-form-field.panel-open {
-  .mat-mdc-select-arrow{
+  .mat-mdc-select-arrow {
     transform: rotate(-180deg);
   }
 }
 
 ::ng-deep.picker-panel {
-  &.mdc-menu-surface.mat-mdc-select-panel{
+  &.mdc-menu-surface.mat-mdc-select-panel {
     padding-inline: 5px;
     min-width: 210px;
 
@@ -18,19 +18,22 @@
     right: 1px;
   }
 
-  mat-option{
+  mat-option {
     width: 100%;
     min-height: inherit;
     height: 90%;
     padding: 0;
 
-    &[aria-selected=true] {
-      box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    &[aria-selected="true"] {
+      box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+        rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 
       &.dark {
-        box-shadow: rgba(255, 255, 255, 0.8) 0px 2px 4px, rgba(255, 255, 255, 0.5) 0px 7px 13px -3px, rgba(255, 255, 255, 0.4) 0px -3px 0px inset;
+        box-shadow: rgba(255, 255, 255, 0.8) 0px 2px 4px,
+          rgba(255, 255, 255, 0.5) 0px 7px 13px -3px,
+          rgba(255, 255, 255, 0.4) 0px -3px 0px inset;
       }
     }
   }
-
 }

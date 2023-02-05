@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, SimpleChanges, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
@@ -19,30 +27,40 @@ export class ListViewComponent {
   sort!: MatSort;
 
   @Input() paginator!: MatPaginator;
-  @Input() tagsData : any;
+  @Input() tagsData: any;
   @Input() filterString = '';
   @Output() tagRowClicked = new EventEmitter<Tag>();
 
   dataSource = new MatTableDataSource<any>();
-  displayedColumns: string[] = ['color', 'name', 'createDate', 'lastUpdate', 'createdBy'];
+  displayedColumns: string[] = [
+    'color',
+    'name',
+    'createDate',
+    'lastUpdate',
+    'createdBy',
+  ];
 
   subs: SubSink = new SubSink();
   lastFilter: string = '';
   filter = new Filter();
 
-  constructor(){}
+  constructor() {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(changes['tagsData'] || changes['filterString']){
-      this.dataSource.data = this.filter.getTags((this.filterString || ''), this.tagsData);
+    if (changes['tagsData'] || changes['filterString']) {
+      this.dataSource.data = this.filter.getTags(
+        this.filterString || '',
+        this.tagsData
+      );
     }
-    if(changes['paginator'] ){
+    if (changes['paginator']) {
       this.dataSource.paginator = this.paginator;
     }
   }
 
   ngOnInit(): void {
-    this.dataSource.sortingDataAccessor = (data, sortHeaderId) => data[sortHeaderId].toLocaleLowerCase();
+    this.dataSource.sortingDataAccessor = (data, sortHeaderId) =>
+      data[sortHeaderId].toLocaleLowerCase();
   }
 
   ngAfterViewInit(): void {
@@ -54,7 +72,7 @@ export class ListViewComponent {
     this.subs.unsubscribe();
   }
 
-  rowClicked(row: Tag): void{
+  rowClicked(row: Tag): void {
     this.tagRowClicked.emit(row);
   }
 }

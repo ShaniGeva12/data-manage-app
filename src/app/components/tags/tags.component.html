@@ -1,10 +1,11 @@
-<div *ngIf="(dataSource$ | async) as dataSource">
+<div *ngIf="dataSource$ | async as dataSource">
   <app-list-view
     *ngIf="view === viewOptions.List; else gridView"
     [tagsData]="dataSource"
     [paginator]="paginator"
     [filterString]="filterString"
-    (tagRowClicked)="tagClicked($event)">
+    (tagRowClicked)="tagClicked($event)"
+  >
   </app-list-view>
 
   <ng-template #gridView>
@@ -13,7 +14,8 @@
       [paginator]="paginator"
       [filterString]="filterString"
       [pageEvent]="pageEvent"
-      (tagClicked)="tagClicked($event)">
+      (tagClicked)="tagClicked($event)"
+    >
     </app-grid-view>
   </ng-template>
 
@@ -23,6 +25,7 @@
     [pageSizeOptions]="[5, 10, 20]"
     (page)="onPageChanged($event)"
     showFirstLastButtons
-    aria-label="Select page">
+    aria-label="Select page"
+  >
   </mat-paginator>
 </div>

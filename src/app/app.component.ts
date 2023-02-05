@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ViewChild,
+} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Tag } from './components/tags/model/tag.model';
 import { MatDrawer } from '@angular/material/sidenav';
@@ -12,8 +17,8 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  @ViewChild( MatDrawer)
-  drawer!:  MatDrawer;
+  @ViewChild(MatDrawer)
+  drawer!: MatDrawer;
 
   title = 'data-manage-app';
 
@@ -24,11 +29,9 @@ export class AppComponent {
 
   filterSearch = new FormControl();
 
-  constructor(
-    ) { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   refreshDrawer(): void {
     this.tagToEdit = undefined;
@@ -41,7 +44,7 @@ export class AppComponent {
   }
 
   tagSubmitted(isSuccess: boolean): void {
-    if(isSuccess) {
+    if (isSuccess) {
       this.refreshDrawer();
     }
   }

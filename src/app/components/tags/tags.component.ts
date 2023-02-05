@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, SimpleChanges, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { ItemsView } from './model/items-view';
 import { Tag } from './model/tag.model';
 import { Observable, tap } from 'rxjs';
@@ -14,7 +22,6 @@ import { Filter } from './components/utils/filter';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TagsComponent {
-
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
@@ -32,22 +39,20 @@ export class TagsComponent {
 
   dataLength = 0;
 
-  constructor(private tagsService: TagsService){}
+  constructor(private tagsService: TagsService) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(changes['filterString'] && this.view === ItemsView.Grid){
-      this.dataSource$ = this.tagsService.tags$.pipe(tap((tags) => {
-        let filtered = this.filter.getTags((this.filterString || ''), tags);
-        this.dataLength = filtered.length;
-      }));
+    if (changes['filterString'] && this.view === ItemsView.Grid) {
+      this.dataSource$ = this.tagsService.tags$.pipe(
+        tap((tags) => {
+          let filtered = this.filter.getTags(this.filterString || '', tags);
+          this.dataLength = filtered.length;
+        })
+      );
     }
   }
 
-  ngOnInit(): void {
-  }
-
-  ngAfterViewInit(): void {
-  }
+  ngOnInit(): void {}
 
   ngOnDestroy(): void {
     this.subs.unsubscribe;
@@ -60,5 +65,4 @@ export class TagsComponent {
   onPageChanged(pageEvent: PageEvent): void {
     this.pageEvent = pageEvent;
   }
-
 }

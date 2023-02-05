@@ -1,5 +1,18 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
-import { AbstractControl, ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validators } from '@angular/forms';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import {
+  AbstractControl,
+  ControlValueAccessor,
+  FormControl,
+  NG_VALIDATORS,
+  NG_VALUE_ACCESSOR,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
 import { MatSelect } from '@angular/material/select';
 import { ColorRgba } from '../../model/color-rgba';
 import { SubSink } from 'subsink';
@@ -13,14 +26,14 @@ import { SubSink } from 'subsink';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: ColorPickerComponent,
-      multi: true
+      multi: true,
     },
     {
       provide: NG_VALIDATORS,
       useExisting: ColorPickerComponent,
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class ColorPickerComponent implements OnInit, ControlValueAccessor {
   @ViewChild('matSelect', { read: MatSelect })
@@ -39,7 +52,9 @@ export class ColorPickerComponent implements OnInit, ControlValueAccessor {
   ];
 
   colorsPaletteRgba: ColorRgba[][] = [];
-  colorsPaletteString: string[][] = this.colorsPaletteRgba.map(item=> item.map(item=> item.getColorString() || ''));
+  colorsPaletteString: string[][] = this.colorsPaletteRgba.map((item) =>
+    item.map((item) => item.getColorString() || '')
+  );
 
   colorSelect = new FormControl();
   subs = new SubSink();
@@ -53,9 +68,11 @@ export class ColorPickerComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit(): void {
     this.colorsPaletteRgba = this.createColorsPalette(this.basicRGBA);
-    this.colorsPaletteString = this.colorsPaletteRgba.map(item=> item.map(item=> item.getColorString() || ''));
+    this.colorsPaletteString = this.colorsPaletteRgba.map((item) =>
+      item.map((item) => item.getColorString() || '')
+    );
 
-    this.subs.sink = this.colorSelect.valueChanges.subscribe(value => {
+    this.subs.sink = this.colorSelect.valueChanges.subscribe((value) => {
       this.colorValue = value;
       this.onChanged(value);
     });
@@ -65,8 +82,8 @@ export class ColorPickerComponent implements OnInit, ControlValueAccessor {
     this.subs.unsubscribe();
   }
 
-  createColorsPalette(basicRgbaColors: ColorRgba[]) : ColorRgba[][] {
-    return basicRgbaColors.map(color => {
+  createColorsPalette(basicRgbaColors: ColorRgba[]): ColorRgba[][] {
+    return basicRgbaColors.map((color) => {
       const shades = [];
       for (let i = 0; i < 9; i++) {
         shades.push(ColorRgba.createFromColor(color, i * 0.1));
@@ -77,7 +94,9 @@ export class ColorPickerComponent implements OnInit, ControlValueAccessor {
 
   validate(control: AbstractControl): ValidationErrors | null {
     let validate: ValidationErrors | null = null;
-    this.isValidatorRequired = control.hasValidator(Validators.required) as boolean;
+    this.isValidatorRequired = control.hasValidator(
+      Validators.required
+    ) as boolean;
     if (this.isValidatorRequired) {
       this.colorSelect.setValidators(Validators.required);
       const forbidden = control.value?.length === 0;
@@ -90,13 +109,21 @@ export class ColorPickerComponent implements OnInit, ControlValueAccessor {
 
   writeValue(color: string | ColorRgba): void {
     if (color instanceof ColorRgba) {
-      if(this.colorsPaletteRgba.find(colorsArr => colorsArr.find(item => item.compare(color)))) {
+      if (
+        this.colorsPaletteRgba.find((colorsArr) =>
+          colorsArr.find((item) => item.compare(color))
+        )
+      ) {
         this.colorSelect.setValue(color.getColorString());
       } else {
         this.colorSelect.reset();
       }
     } else {
-      if(this.colorsPaletteString.find(colorsArr => colorsArr.find(item => item == color))) {
+      if (
+        this.colorsPaletteString.find((colorsArr) =>
+          colorsArr.find((item) => item == color)
+        )
+      ) {
         this.colorSelect.setValue(color);
       } else {
         this.colorSelect.reset();
@@ -111,7 +138,6 @@ export class ColorPickerComponent implements OnInit, ControlValueAccessor {
   }
   setDisabledState?(isDisabled: boolean): void {
     this.disabled = isDisabled;
-    this.disabled? this.colorSelect.disable() : this.colorSelect.enable();
+    this.disabled ? this.colorSelect.disable() : this.colorSelect.enable();
   }
-
 }

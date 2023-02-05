@@ -1,7 +1,18 @@
-<mat-form-field class="color-picker" appearance="outline" [ngClass]="{'panel-open': matSelect.panelOpen}">
-  <mat-select [formControl]="colorSelect" panelClass="picker-panel" #matSelect="matSelect">
+<mat-form-field
+  class="color-picker"
+  appearance="outline"
+  [ngClass]="{ 'panel-open': matSelect.panelOpen }"
+>
+  <mat-select
+    [formControl]="colorSelect"
+    panelClass="picker-panel"
+    #matSelect="matSelect"
+  >
     <mat-select-trigger>
-      <div class="color-selected" [style.background-color]="colorSelect.value"></div>
+      <div
+        class="color-selected"
+        [style.background-color]="colorSelect.value"
+      ></div>
     </mat-select-trigger>
 
     <mat-grid-list cols="{{ basicRGBA.length }}" rowHeight="1:1" gutterSize="2">
@@ -9,8 +20,12 @@
         <mat-grid-tile *ngFor="let color of colors">
           <mat-option
             [value]="color"
-            [ngClass]="{'dark': color === 'rgba(0, 0, 0, 1)' || color === 'rgba(0, 0, 0, 0.8)'}"
-            [style.background-color]="color">
+            [ngClass]="{
+              dark:
+                color === 'rgba(0, 0, 0, 1)' || color === 'rgba(0, 0, 0, 0.8)'
+            }"
+            [style.background-color]="color"
+          >
           </mat-option>
         </mat-grid-tile>
       </ng-container>
