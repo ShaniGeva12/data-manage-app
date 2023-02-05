@@ -11,11 +11,11 @@
     },
     {
       "id": 1,
-      "color": "rgba(244, 67, 54, 1)",
+      "color": "rgba(233, 30, 98, 1)",
       "name": "Murder",
       "description": "someone got killed",
       "createDate": "2023-02-02T15:46:46.654Z",
-      "lastUpdate": "2023-02-05T15:30:23.045Z",
+      "lastUpdate": "2023-02-05T15:46:30.873Z",
       "createdBy": "Avi Navi"
     },
     {

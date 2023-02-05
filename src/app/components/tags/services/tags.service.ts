@@ -37,7 +37,7 @@ export class TagsService {
   }
 
   private putTag(tag: Tag): Observable<Tag> {
-    return this.http.put<Tag>( `${this.TagsServiceUrl}/${tag.id}X` , <AddTagRequest>tag)
+    return this.http.put<Tag>( `${this.TagsServiceUrl}/${tag.id}` , <AddTagRequest>tag)
       .pipe(
         catchError(err => this.handleError(err, 'putTag', tag))
       );
