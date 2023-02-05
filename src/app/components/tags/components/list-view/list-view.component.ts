@@ -31,9 +31,9 @@ export class ListViewComponent {
   lastFilter: string = '';
   filter = new Filter();
 
-  constructor(private tagsService: TagsService){}
+  constructor(){}
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     if(changes['tagsData'] || changes['filterString']){
       this.dataSource.data = this.filter.getTags((this.filterString || ''), this.tagsData);
     }

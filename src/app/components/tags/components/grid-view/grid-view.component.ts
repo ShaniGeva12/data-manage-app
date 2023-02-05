@@ -25,7 +25,7 @@ export class GridViewComponent {
   constructor(){
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     if((changes['tagsData'] || changes['filterString']) && this.paginator){
       this.filteredTags = this.filter.getTags((this.filterString || ''), this.tagsData);
       this.activePageDataChunk = this.filteredTags.slice(0, this.paginator.pageSize);
@@ -38,7 +38,7 @@ export class GridViewComponent {
   ngOnInit() : void {
   }
 
-  onPageChanged(pageEvent: PageEvent) {
+  onPageChanged(pageEvent: PageEvent): void {
     if(pageEvent){
       let firstCut = pageEvent.pageIndex * pageEvent.pageSize;
       let secondCut = firstCut + pageEvent.pageSize;

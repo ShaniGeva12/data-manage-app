@@ -31,7 +31,7 @@ export class AddTagComponent {
     this.subs.unsubscribe();
   }
 
-  setForm(){
+  setForm(): void {
     this.tagForm = this.fb.group({
       name: [ null,
         Validators.required
@@ -67,7 +67,7 @@ export class AddTagComponent {
     }
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.tagForm.controls['lastUpdate'].setValue(new Date());
 
     if(!this.tag) {

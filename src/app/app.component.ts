@@ -18,7 +18,6 @@ export class AppComponent {
   drawer!:  MatDrawer;
 
   title = 'data-manage-app';
-  subs = new SubSink();
 
   tagToEdit: Tag | undefined;
 
@@ -33,27 +32,23 @@ export class AppComponent {
   ngOnInit(): void {
   }
 
-  ngOnDestroy() {
-    this.subs.unsubscribe();
-  }
-
-  refreshDrawer() {
+  refreshDrawer(): void {
     this.tagToEdit = undefined;
     this.drawer.toggle();
   }
 
-  openEditTag(tag: Tag) {
+  openEditTag(tag: Tag): void {
     this.tagToEdit = tag;
     this.drawer.open();
   }
 
-  tagSubmitted(isSuccess: boolean) {
+  tagSubmitted(isSuccess: boolean): void {
     if(isSuccess) {
       this.refreshDrawer();
     }
   }
 
-  toggleView(newView: ItemsView) {
+  toggleView(newView: ItemsView): void {
     this.view = newView;
   }
 }

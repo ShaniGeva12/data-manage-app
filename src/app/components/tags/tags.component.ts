@@ -57,7 +57,7 @@ export class TagsComponent {
     this.tagRowClicked.emit(tag);
   }
 
-  onPageChanged(pageEvent: PageEvent) {
+  onPageChanged(pageEvent: PageEvent): void {
     this.pageEvent = pageEvent;
   }
 

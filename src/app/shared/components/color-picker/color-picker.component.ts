@@ -61,7 +61,7 @@ export class ColorPickerComponent implements OnInit, ControlValueAccessor {
     });
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.subs.unsubscribe();
   }
 
