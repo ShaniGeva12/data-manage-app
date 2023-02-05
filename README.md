@@ -15,7 +15,7 @@ Please note that the api calls for this port (3002), so make sure you specify it
 
 
 ## Development server
-Run `ng serve --port 5002` for a dev server. Navigate to `http://localhost:5002/`.
+Run `ng serve --port 5002` for a dev server. Navigate to [http://localhost:5002/](http://localhost:5002/).
 
 The application will automatically reload if you change any of the source files.
 
